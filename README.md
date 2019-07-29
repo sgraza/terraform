@@ -33,13 +33,13 @@ terraform init
 terraform plan -var-file=variables.tfvars
 ```
 
-3. Builds or changes infrastructure
+3. Builds or change Infrastructure
 
 ```
 terraform apply -var-file=variables.tfvars
 ```
 
-4. To delete the infrastructure
+4. To destroy the Infrastructure
 
 ```
 terraform destroy -var-file=variables.tfvars
