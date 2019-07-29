@@ -10,6 +10,8 @@ Using terraform to create infrastrucutre on AWS using code. In this code, we are
 6. Key Pair used for SSH access
 7. EC2 Instance inside our public subnet with an associated security group and generated a key pair
 
+EC2 Operation System: Red Hat Enterprise Linux 8
+
 # Create private and public key using Openssl
 
 ```
