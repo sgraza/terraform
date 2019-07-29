@@ -7,16 +7,25 @@ resource "aws_vpc" "vpc_devops" {
   cidr_block = "${var.vpc_cidr_block}"
   enable_dns_support   = true
   enable_dns_hostnames = true
+  tags = {
+    Name = "${var.name_tag}"
+  }
 }
 
 resource "aws_internet_gateway" "igw"{
   vpc_id = "${aws_vpc.vpc_devops.id}"
+  tags = {
+    Name = "${var.name_tag}"
+  }
 }
 
 resource "aws_subnet" "sub_public_devops" {
   vpc_id                  = "${aws_vpc.vpc_devops.id}"
   cidr_block              = "${var.subnet_cidr_block}"
   map_public_ip_on_launch = true
+  tags = {
+    Name = "${var.name_tag}"
+  }
 }
 
 resource "aws_route_table" "rtb_public" {
@@ -24,6 +33,9 @@ resource "aws_route_table" "rtb_public" {
   route {
       cidr_block = "0.0.0.0/0"
       gateway_id = "${aws_internet_gateway.igw.id}"
+  }
+  tags = {
+    Name = "${var.name_tag}"
   }
 }
 
@@ -57,6 +69,10 @@ resource "aws_security_group" "sg_devops" {
     protocol        = "-1"
     cidr_blocks     = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "${var.name_tag}"
+  }
 }
 
 resource "aws_key_pair" "kp_devops" {
@@ -71,4 +87,8 @@ resource "aws_instance" "ec2_devops" {
   vpc_security_group_ids      = ["${aws_security_group.sg_devops.id}"]
   subnet_id                   = "${aws_subnet.sub_public_devops.id}"
   associate_public_ip_address = true
+
+  tags = {
+    Name = "${var.name_tag}"
+  }
 }

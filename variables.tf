@@ -13,3 +13,6 @@ variable "instance_type" {
 variable "public_key_path" {
     description = "Public Key Path"
 }
+variable "name_tag" {
+    description = "Environment Tag"
+}
