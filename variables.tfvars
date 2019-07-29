@@ -1,0 +1,5 @@
+vpc_cidr_block    = "192.168.1.0/24"
+subnet_cidr_block = "192.168.1.0/26"
+instance_ami      = "ami-04a2d6660f1296314"
+instance_type     = "t2.micro"
+public_key_path   = "~/kp_devops.pub"
