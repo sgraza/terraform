@@ -44,3 +44,9 @@ terraform destroy -var-file=variables.tfvars
 ```
 
 Note: You can update/add variables in variables.tfvars file.
+
+# You can now ssh to the EC2 instance using the output public IP and key pair.
+
+```
+ssh -i kp_devops.pem ec2-user@<ipaddress>
+```
